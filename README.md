@@ -20,5 +20,8 @@ and I like LEGO, especially the flexibilty it provides. thus I build my small ca
 ### Results folder
 I plan to consolidate all analysis data and vedio here, if my result is perfect.    em.... maybe it can be useful when I become old and forget everything I have done in my young age. 
 
+enjoy building , enjoy coding and enjoy life
 
+Cheers
+Chen Jian
 
