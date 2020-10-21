@@ -7,7 +7,7 @@ State space design thinking flow
 3. Do a simple time transient simulation basing on ODE.  
 
 # SS check
-4. Define state space system model : A B C D  around theta = pi  and 0 (downwards direction)
+4. Define linearized state space system model : A B C D  around theta = pi  and 0 (downwards direction)
 5. understand its stability by eigen value
 6. simulate its time transient 
 
