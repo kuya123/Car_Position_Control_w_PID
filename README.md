@@ -11,13 +11,13 @@ in this section , I will control a inverted pendulum car.  I will send the locat
 
 # File list 
 
-### Octave analysis
+### Octave Analysis folder
 anyway, I like Octave and thus I have to use it as a Matlab substitution.  here I build model and run simulation to verify my idea. 
 
-### Arduino HW
+### Arduino HW folder
 and I like LEGO, especially the flexibilty it provides. thus I build my small car and Inverted Pendulum car with LEGO.  in this folder, I put my firmware and HW info
 
-### Results
+### Results folder
 I plan to consolidate all analysis data and vedio here, if my result is perfect.    em.... maybe it can be useful when I become old and forget everything I have done in my young age. 
 
 
