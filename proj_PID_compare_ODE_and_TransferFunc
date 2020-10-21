@@ -1,4 +1,4 @@
-﻿m=0.05;
+m=0.05;
 force=[0 0.8 0 0 0];
 k=0.5;
 
@@ -40,7 +40,7 @@ yout=[yNL1' yNL2' yNL3' yNL4' yNL5']';
 
 
 figure;
-hold on;
+
 plot(tnew, yout(:,1));
 xlim([0 50]);
 #figure
@@ -48,9 +48,9 @@ xlim([0 50]);
 
 
 ################### Transfer function  memthod #############
-syms s;
-Gd=sym2poly(m*(s*s+s*k));
-G=tf(1,Gd );
+
+
+G=proj_PID_car_TF_model(m,k);
 
 t=0:0.01:50.04;
 f1 = ones(1001,1)*force(1);
@@ -62,4 +62,3 @@ f5 = ones(1001,1)*force(5);
 fnew = [f1' f2' f3' f4' f5']';
 
 lsim(G, fnew, t)
-

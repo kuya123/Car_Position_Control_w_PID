@@ -1,5 +1,5 @@
-﻿## draw a simple car with X position as parameter only
-function draw_simple_car(x)
+## draw a simple car with X position as parameter only
+function proj_PID_draw_simple_car(x)
 # Car picture dimension ratio
 M=10;  
 
@@ -17,7 +17,7 @@ w1y = 0;
 w2x = x+.9*W/2-wr;
 w2y = 0;
 
-clf;
+
 
 h1=plot([-20 20],[0 0],'r','LineWidth',2);
 hold on;
