@@ -1,4 +1,4 @@
-﻿
+
 # build the system
 m=0.5;
 M=1.5;
@@ -6,7 +6,7 @@ L=1;
 g=9.8;
 d=0.5;
 
-y0=[0 0 pi 0];
+y0=[0 0 1.4 0];
 tspan=0.1:0.1:3;
 force=[0.8 -0.8 0.8 -0.8];
 Y=[];
@@ -30,3 +30,6 @@ plot(T,Y(:,3));
 legend ("location", "speed","angle");
 
 
+for T=1:1:120
+ proj_SS_PID_draw_inverted_pendulum(Y(T,:),m,M,L)
+endfor
