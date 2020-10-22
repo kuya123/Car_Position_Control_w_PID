@@ -14,7 +14,7 @@ State space design thinking flow
 # control check
 7. check controllability and observability
 8. in our case we can measure distance and angle, thus we can temporarily bypass observability
-9. select target eigen value and calculate target Kp
+9. select target eigen value and calculate target Kp with LQR filter.
 10. evaluate new feedback system stability and time transient 
 11. study system type and decide whether we need a Ki
 12. improve system by introducing Kd and simulate again. 
