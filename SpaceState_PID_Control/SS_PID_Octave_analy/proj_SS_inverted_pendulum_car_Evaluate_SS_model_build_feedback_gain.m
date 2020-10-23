@@ -6,8 +6,9 @@ L = 2;
 g = -10;
 d = 1;
 
-
+###############################################################
 ##### section 1 analysis stability #########
+###############################################################
 display("\n");
 display("********* analyze system stability @ pointing UP ******");
 [A B C D]= proj_SS_inverted_pendulum_car_SS_model(m,M,L,g,d,0);
@@ -21,11 +22,14 @@ det(ctrb(A,B))
 display("\nResult : eigen value value of A at UP position is not stable. The system is controllable I need to construct a feedback -K to make it stable");
 
 
+###############################################################
+###### setcion 2  : try POLE placement method #################
+###############################################################
 pole=[ -2 -3 -2.5 -4]';
 display("\nFeedback coefficeient :: \n");
 K=place(A,B,pole)
 
-###### simulate this new feedback system with ODE ############
+#----- simulate this new feedback system with ODE -----
 tspan=0.1:0.1:20;
 
 y0=[-2;0;0;0];
@@ -40,18 +44,51 @@ y_target=[-3;0;0;0];
 y_overall=[y_new1;y_new2];
 t=[t1;t2+t1(numel(t1))];
 
+figure();
 plot(t,y_overall);
+title ("Movement with Pole Placement K");
+legend("x","v","the","the-a");
+
+
+
+####################################################################
+###### setcion 3  : try LQR  method ################################
+####################################################################
+## linear quadratic regulator
+Q=[50 0 0 0;0 1 0 0; 0 0 2 0; 0 0 0 1];
+R=0.01;
+K=lqr(A,B,Q,R);
+
+
+tspan=0.1:0.1:20;
+
+y0=[-2;0;0;0];
+y_target=[2;0;0;0];
+[t1,y_new1] = ode45(@(t,y)proj_SS_inverted_pendulum_car_ODE_model(y,m,M,L,g,d,-K*(y_target-y)),tspan,y0);
+
+
+y0=y_new1(numel(t1),:)';
+y_target=[-3;0;0;0];
+[t2,y_new2] = ode45(@(t,y)proj_SS_inverted_pendulum_car_ODE_model(y,m,M,L,g,d,-K*(y_target-y)),tspan,y0);
+
+y_overall=[y_new1;y_new2];
+t=[t1;t2+t1(numel(t1))];
+
+figure();
+plot(t,y_overall);
+title ("Movement with LQR K");
 legend("x","v","the","the-a");
 
 
 ###### simulate the flow by catoon ####
 
 % comment out below annimation due to time saving.
-
+%{
+figure();
 for k=1:1:numel(y_overall)
     proj_SS_PID_draw_inverted_pendulum(y_overall(k,:),m,M,L)
 endfor
-
+%}
 
 
 #{
