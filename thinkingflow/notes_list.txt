@@ -1,0 +1,16 @@
+2020.10.27
+
+PWM timer setting as below :
+Target period	500	us
+Timmer1	65536	
+F_CPU	16000000	
+PERIOD CYCLE	400	
+	
+duty	30
+pwm on	120
+pwm off	280
+	
+code duty (1024)	307
+ocr counter	119
+
+so, the PWM duty cycle is not the bottleneck, we need to check the stop response from sonar radar. 
