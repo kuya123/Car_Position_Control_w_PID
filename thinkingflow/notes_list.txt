@@ -1,16 +1,26 @@
-2020.10.27
+Project update and thinking notes. 
 
-PWM timer setting as below :
-Target period	500	us
-Timmer1	65536	
-F_CPU	16000000	
-PERIOD CYCLE	400	
-	
-duty	30
-pwm on	120
-pwm off	280
-	
-code duty (1024)	307
-ocr counter	119
+2020.10.25 ~ 26
 
-so, the PWM duty cycle is not the bottleneck, we need to check the stop response from sonar radar. 
+build up my dear car twice.  I used sonar radar to detect distance.  after some testing, the sonar responce is quite accurate and fast, great.  I can get everything updated less than 3ms.  good.
+
+my PWM driver is running now.   PWM period can be as short as 500uS.   but the problem, I found during testing, is that shorter PWM period will require higher dutycycle to turn motor on.   thus to make a balance between period update for PID loop, Sonar distance sampling and PWM period, I still prefer PWM period set to around 2mS. 
+
+
+2020.10.27 update
+
+today I implemented PID loop on the system and it can follow command to make target-location movement.  the system is not accurate yet, but at least it runs up.  hello world. 
+
+
+2020.10.28 update
+
+1. the TT motor has low torque and it has difficulty to make any movement at low dutycycle PWM. thus I changed PID output value mapping machenicsm to make the PID output range from -90% to 90% with an additional 10% offset for its final driven number. It works and now 10% is the smalleast duty for my motor. 
+
+2. I have implement dynamic Kp/Ki/Kd changing.  aggressive number are used when distance > 300, and conservative number are used for distance difference < 150.  it works. 
+
+3. due to low torque from TT motor, the car movement is not so swift.  thus I decide to try some new high torque motor. after searching I locate 370 motor, which can provide abt 0.8kgcm torque value.  I will try it later and hope I can get a faster responce. 
+
+4. my Kd derivative control in PID loop doesn't show out correct behavior, i need to check it out. 
+
+
+
