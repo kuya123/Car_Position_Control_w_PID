@@ -23,4 +23,12 @@ today I implemented PID loop on the system and it can follow command to make tar
 4. my Kd derivative control in PID loop doesn't show out correct behavior, i need to check it out. 
 
 
+===== some idea notes ============
+notes:
+
+for next State space control system, I can follow this flow:
+1. use sync routine to measure location, speed, theta, omega.
+2. basing on system model sys(A,B), setting weighting matrix Q, R and using LQR to calculate K (1 x 4)
+3. use feedback to calculate delta X, times K (1x4)  to get U (1x1)
+4. use U to push car. 
 
