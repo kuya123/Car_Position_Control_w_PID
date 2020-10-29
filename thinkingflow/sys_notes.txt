@@ -1,0 +1,3 @@
+CAR weight : 458g
+Arm length: 23cm
+small load weight: 33.8g
