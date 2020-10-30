@@ -1,3 +1,26 @@
+2020.10.29
 CAR weight : 458g
 Arm length: 23cm
 small load weight: 33.8g
+
+2020.10.30
+today I got two JGA25 motor with encoder.  By this way I can remove my sounar radar as a distance detection mean.
+and these two motors has a gear reduction ratio of 1:34, the torque is much higher than previous TT motor.
+
+here are some basic testing data to character these motors:
+codition: Motor 7V dc, Sensor:5V dc
+motor one speed: 42000code = 42000 / 360 line / 34 = 3.4313 rps
+motor two speed: 40000code = 40000 / 360 line / 34 = 3.2679 rps
+
+there is a 5% difference on their speed. 
+
+I plan to 
+
+0. still use sonar radar as distance measurement method. the reason is simple: if I lift up the car and move it,  sonar will understand my position well encoder can not. 
+
+1. but I can use encoder as the way to calculate SPEED information. thus in case I move my WALL and change the car "location" manually,  it will not misunderstand its speed. 
+
+2. use only one PWM to drive both motor, ignore the problem motor-difference caused rotation and Use the motor to realize the basic function frame. 
+
+3. detail check timer configuraion, can generate two PWM signal with 5% difference to compensate the motor error. 
+
